@@ -13,4 +13,4 @@ COPY shellinabox.conf /etc/default/shellinabox
 
 EXPOSE 4200
 
-CMD service shellinabox start && tail -f /dev/null
+CMD service shellinabox start && bash

@@ -67,6 +67,8 @@ services:
     networks:
       public_network:
         ipv4_address: 192.168.10.30
+    ports:
+    - "4200:4200"
 
 networks:
   public_network:
