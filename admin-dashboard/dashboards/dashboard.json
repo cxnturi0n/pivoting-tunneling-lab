@@ -1,0 +1,68 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 11,
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "1. **Update Server OS**\n\n2. **Backup Configuration Files**\n\n3. **Monitor System Performance**\n\n4. **User Account Management**\n\n5. ...\n\n## Important Note\n\nBecause I forget things easily.\n\n1. **Credential Set A:**\n   - Username: sysadmin\n   - Password: Pa$$w0rdA\n2. **Credential Set B:**\n   - Username: sysadmin\n   - Password: Pa$$w0rdB\n\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "10.3.3",
+        "title": "Sysadmin Todo List",
+        "type": "text"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "SysAdmin dashboard",
+    "uid": "dab87712-4afa-4bcd-9c55-e89c63434e29",
+    "version": 5,
+    "weekStart": ""
+  }

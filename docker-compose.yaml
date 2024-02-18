@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   ping-api:
     container_name: ping-api
     build:
@@ -12,4 +13,11 @@ services:
     build:
       context: ./ping-web-app
     ports:
-      - "80:80" 
+      - "80:80"
+  
+  admin-dashboard:
+    container_name: admin-dashboard
+    build:
+      context: ./admin-dashboard
+    ports:
+      - "3000:3000"
