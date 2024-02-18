@@ -20,7 +20,7 @@ services:
         REACT_APP_API_BASE_URL: http://192.168.10.69
         REACT_APP_API_PING_ENDPOINT: /ping
     networks:
-      external_network:
+      public_network:
         ipv4_address: 192.168.10.69
       internal_devs_network:
         ipv4_address: 192.168.20.51
@@ -65,11 +65,11 @@ services:
     build:
       context: ./attacker
     networks:
-      external_network:
+      public_network:
         ipv4_address: 192.168.10.30
 
 networks:
-  external_network:
+  public_network:
     driver: bridge
     ipam:
       config:
