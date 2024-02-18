@@ -1,0 +1,1 @@
+FROM dockersecplayground/kali:latest 

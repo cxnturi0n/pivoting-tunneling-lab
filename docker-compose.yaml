@@ -6,16 +6,26 @@ services:
     build:
       context: ./ping-api
     env_file: ./ping-api/.env
+    networks:
+      internal_devs_network:
+        ipv4_address: 192.168.20.52
     ports:
-      - "8080:8080" 
+      - "8080:8080"
 
   ping-web-app:
     container_name: ping-web-app
     build:
       context: ./ping-web-app
       args:
-        REACT_APP_API_BASE_URL: http://localhost
+        REACT_APP_API_BASE_URL: http://192.168.10.69
         REACT_APP_API_PING_ENDPOINT: /ping
+    networks:
+      external_network:
+        ipv4_address: 192.168.10.69
+      internal_devs_network:
+        ipv4_address: 192.168.20.51
+      internal_employees_network:
+        ipv4_address: 192.168.30.20
     ports:
       - "80:80"
   
@@ -23,25 +33,56 @@ services:
     container_name: admin-dashboard
     build:
       context: ./admin-dashboard
+    networks:
+      internal_devs_network:
+        ipv4_address: 192.168.20.53
     ports:
       - "3000:3000"
   
   employee-host-1:
-      container_name: employee-host-1
-      build:
-        context: ./employee-host-1
-      env_file: ./employee-host-1/.env
-      ports:
-        - "6080:80"
+    container_name: employee-host-1
+    build:
+      context: ./employee-host-1
+    env_file: ./employee-host-1/.env
+    networks:
+      internal_employees_network:
+        ipv4_address: 192.168.30.21
+    ports:
+      - "6080:80"
 
   employee-host-2:
-      container_name: employee-host-2
-      build:
-        context: ./employee-host-2
-      ports:
+    container_name: employee-host-2
+    build:
+      context: ./employee-host-2
+    networks:
+      internal_employees_network:
+        ipv4_address: 192.168.30.22
+    ports:
         - "2202:22"
 
+  attacker:
+    container_name: attacker
+    build:
+      context: ./attacker
+    networks:
+      external_network:
+        ipv4_address: 192.168.10.30
 
-
+networks:
+  external_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+  internal_devs_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
+  internal_employees_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.30.0/24
 
 
