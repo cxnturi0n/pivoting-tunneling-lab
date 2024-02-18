@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ping-api:
+    container_name: ping-api
+    build:
+      context: ./ping-api
+    ports:
+      - "8080:8080" 
+
+  ping-web-app:
+    container_name: ping-web-app
+    build:
+      context: ./ping-web-app
+    ports:
+      - "80:80" 

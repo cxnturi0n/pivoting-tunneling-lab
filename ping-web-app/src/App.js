@@ -14,9 +14,8 @@ const App = () => {
       setLoading(true);
       setError('');
       setResult('');
-
-
-      const response = await fetch('http://localhost:5000/ping', {
+      console.log('ciao')
+      const response = await fetch('http://localhost/ping', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,6 +31,7 @@ const App = () => {
         setError(data.error);
       }
     } catch (error) {
+      console.log(error)
       setError('Error connecting to the server');
     } finally {
       setLoading(false);
