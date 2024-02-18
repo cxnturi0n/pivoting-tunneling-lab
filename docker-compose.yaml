@@ -5,6 +5,7 @@ services:
     container_name: ping-api
     build:
       context: ./ping-api
+    env_file: ./ping-api/.env
     ports:
       - "8080:8080" 
 
@@ -12,6 +13,9 @@ services:
     container_name: ping-web-app
     build:
       context: ./ping-web-app
+      args:
+        REACT_APP_API_BASE_URL: http://localhost
+        REACT_APP_API_PING_ENDPOINT: /ping
     ports:
       - "80:80"
   
@@ -21,3 +25,23 @@ services:
       context: ./admin-dashboard
     ports:
       - "3000:3000"
+  
+  employee-host-1:
+      container_name: employee-host-1
+      build:
+        context: ./employee-host-1
+      env_file: ./employee-host-1/.env
+      ports:
+        - "6080:80"
+
+  employee-host-2:
+      container_name: employee-host-2
+      build:
+        context: ./employee-host-2
+      ports:
+        - "2202:22"
+
+
+
+
+

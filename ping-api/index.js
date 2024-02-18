@@ -5,7 +5,8 @@ import validateIpAddress from './validateIpAddress.js';
 import {exec} from 'child_process';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
+const bindAddress = process.env.BIND_ADDRESS;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -28,6 +29,6 @@ app.post('/ping', validateIpAddress, (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(port, bindAddress, () => {
   console.log(`Server is running on port ${port}`);
 });

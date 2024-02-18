@@ -1,6 +1,7 @@
 // App.js
 import React, { useState } from 'react';
 import { BeatLoader } from 'react-spinners';
+import { API_BASE_URL, API_PING_ENDPOINT } from "./properties";
 import './App.css';
 
 const App = () => {
@@ -14,8 +15,7 @@ const App = () => {
       setLoading(true);
       setError('');
       setResult('');
-      console.log('ciao')
-      const response = await fetch('http://localhost/ping', {
+      const response = await fetch(`${API_BASE_URL}${API_PING_ENDPOINT}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
