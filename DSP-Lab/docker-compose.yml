@@ -22,7 +22,7 @@ services:
     networks:
       public_net:
         ipv4_address: 192.168.10.35
-  API:
+  ping-api:
     image: 'fabiocinicolo/ping-api:latest'
     stdin_open: true
     tty: true
@@ -31,6 +31,9 @@ services:
     networks:
       developers_net:
         ipv4_address: 192.168.20.52
+    environment:
+      - BIND_ADDRESS=0.0.0.0
+      - PORT=8080
   host-2:
     image: 'fabiocinicolo/employee-host-2:latest'
     stdin_open: true
@@ -49,6 +52,10 @@ services:
     networks:
       employees_net:
         ipv4_address: 192.168.30.21
+    environment:
+      - USER=fabio
+      - PASSWORD=yK4!wX8z
+      - HTTP_PASSWORD=yK4!wX8z
   dashboard:
     image: 'fabiocinicolo/admin-dashboard:latest'
     stdin_open: true
