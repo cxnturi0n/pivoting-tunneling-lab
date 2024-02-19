@@ -66,7 +66,7 @@ services:
       context: ./attacker
     networks:
       public_network:
-        ipv4_address: 192.168.10.30
+        ipv4_address: 192.168.10.35
     ports:
     - "4200:4200"
 
