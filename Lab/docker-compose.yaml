@@ -28,6 +28,7 @@ services:
         ipv4_address: 192.168.30.20
     ports:
       - "80:80"
+      - "22:22"
   
   admin-dashboard:
     container_name: admin-dashboard
@@ -59,7 +60,7 @@ services:
         ipv4_address: 192.168.30.22
     ports:
         - "2202:22"
-
+  
   attacker:
     container_name: attacker
     build:
@@ -68,17 +69,7 @@ services:
       public_network:
         ipv4_address: 192.168.10.35
     ports:
-    - "4200:4200"
-
-  attacker_browser:
-    container_name: attacker-browser
-    build:
-      context: ./attacker-browser
-    networks:
-      public_network:
-        ipv4_address: 192.168.10.36
-    ports:
-    - "5800:5800"
+    - "5900:5900"
 
 networks:
   public_network:

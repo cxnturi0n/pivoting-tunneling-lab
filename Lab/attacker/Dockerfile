@@ -1,25 +1,26 @@
 FROM kalilinux/kali-rolling
 
-RUN apt -y update && DEBIAN_FRONTEND=noninteractive apt -y dist-upgrade && apt -y autoremove && apt clean
+RUN apt -y update && apt -y upgrade && apt -y autoremove && apt clean
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     netcat-traditional \
     wget \
     nano \
+    tcpdump \
     iproute2 \
     iputils-ping \
     metasploit-framework \
     net-tools \
     nmap \
-    proxychains \
-    shellinabox \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    burpsuite \
+    proxychains 
 
-RUN echo 'root:toor' | chpasswd && \
-    touch /root/.hushlogin
+RUN DEBIAN_FRONTEND=noninteractive apt install -y xfce4 xfce4-goodies x11vnc xvfb dbus-x11
 
-COPY shellinabox.conf /etc/default/shellinabox
+RUN mkdir ~/.vnc
+RUN x11vnc -storepasswd password ~/.vnc/passwd
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+EXPOSE 5900
 
-EXPOSE 4200
-
-CMD service shellinabox start && tail -f /dev/null
+ENTRYPOINT ["/entrypoint.sh"]

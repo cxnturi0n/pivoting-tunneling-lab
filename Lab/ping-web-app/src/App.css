@@ -4,6 +4,7 @@
   padding: 20px;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
 }
 
 .error-message {
@@ -15,5 +16,5 @@
   bottom: 10px;
   right: 10px;
   color: #00ff00;
-  font-size: 10px;
+  font-size: 20px;
 }
