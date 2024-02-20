@@ -49,7 +49,7 @@ services:
       internal_employees_network:
         ipv4_address: 192.168.30.21
     ports:
-      - "6080:80"
+      - "6080:3389"
 
   employee-host-2:
     container_name: employee-host-2
