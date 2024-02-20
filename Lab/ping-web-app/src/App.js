@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import { API_BASE_URL, API_PING_ENDPOINT } from "./properties";
