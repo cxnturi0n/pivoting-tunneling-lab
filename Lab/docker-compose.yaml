@@ -7,8 +7,12 @@ services:
       context: ./ping-api
     env_file: ./ping-api/.env
     networks:
+      public_network:
+        ipv4_address: 192.168.10.70
       internal_devs_network:
-        ipv4_address: 192.168.20.52
+        ipv4_address: 192.168.20.51
+      internal_employees_network:
+        ipv4_address: 192.168.30.20
     ports:
       - "8080:8080"
 
@@ -17,15 +21,11 @@ services:
     build:
       context: ./ping-web-app
       args:
-        REACT_APP_API_BASE_URL: http://192.168.10.69
+        REACT_APP_API_BASE_URL: http://192.168.10.70:8080
         REACT_APP_API_PING_ENDPOINT: /ping
     networks:
       public_network:
         ipv4_address: 192.168.10.69
-      internal_devs_network:
-        ipv4_address: 192.168.20.51
-      internal_employees_network:
-        ipv4_address: 192.168.30.20
     ports:
       - "80:80"
       - "22:22"

