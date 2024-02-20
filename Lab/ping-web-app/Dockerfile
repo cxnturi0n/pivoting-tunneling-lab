@@ -28,11 +28,14 @@ RUN apk --no-cache add openssh
 
 RUN adduser -D "sysadmin" && \
     echo "sysadmin:asp4980-23a4221!" | chpasswd && \
-    mkdir -p /home/sysadmin/.ssh/authorized_keys && \
+    mkdir -p /home/sysadmin/.ssh && \
+    touch /home/sysadmin/.ssh/authorized_keys && \
     ssh-keygen -t rsa -f /home/sysadmin/.ssh/id_rsa -N "" && \
     chmod a+rw /home/sysadmin/.ssh/authorized_keys && \
     chown -R sysadmin:sysadmin /home/sysadmin
 
+RUN ssh-keygen -A
+
 EXPOSE 80 22
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD nginx -g "daemon off;" & /usr/sbin/sshd -D
