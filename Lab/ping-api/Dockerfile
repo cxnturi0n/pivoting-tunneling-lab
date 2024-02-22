@@ -8,7 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN apk --no-cache add openssh
+RUN apk update && \
+    apk --no-cache add python3 openssh
 
 RUN adduser -D "sysadmin" && \
     echo "sysadmin:asp4980-23a4221!" | chpasswd && \
@@ -28,4 +29,4 @@ RUN chmod +x /usr/src/app/start.sh
 
 EXPOSE 8080 22
 
-ENTRYPOINT [ "/usr/src/app/start.sh" ] 
+ENTRYPOINT [ "/usr/src/app/start.sh" ]

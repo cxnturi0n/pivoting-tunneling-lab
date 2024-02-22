@@ -1,6 +1,18 @@
 version: '3'
 services:
 
+  attacker:
+    container_name: attacker
+    build:
+      context: ./attacker
+    networks:
+      public_network:
+        ipv4_address: 192.168.10.35
+    ports:
+    - "5900:5900"
+    cap_add:
+      - NET_ADMIN
+      
   ping-api:
     container_name: ping-api
     build:
@@ -60,16 +72,6 @@ services:
         ipv4_address: 192.168.30.22
     ports:
         - "2222:22"
-  
-  attacker:
-    container_name: attacker
-    build:
-      context: ./attacker
-    networks:
-      public_network:
-        ipv4_address: 192.168.10.35
-    ports:
-    - "5900:5900"
 
 networks:
   public_network:
