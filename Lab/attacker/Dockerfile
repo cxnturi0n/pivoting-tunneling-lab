@@ -1,8 +1,9 @@
 FROM kalilinux/kali-rolling
 
-RUN apt -y update && apt -y upgrade && apt -y autoremove && apt clean
-
-RUN DEBIAN_FRONTEND=noninteractive apt install -y \
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get autoremove -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     netcat-traditional \
     wget \
     nano \
@@ -13,13 +14,21 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y \
     net-tools \
     nmap \
     burpsuite \
-    proxychains 
+    proxychains \
+    xfce4 \
+    xfce4-goodies \
+    x11vnc \
+    xvfb \
+    dbus-x11
 
-RUN DEBIAN_FRONTEND=noninteractive apt install -y xfce4 xfce4-goodies x11vnc xvfb dbus-x11
+RUN mkdir -p /dev/net && \
+    mknod /dev/net/tun c 10 200 && \
+    chmod 600 /dev/net/tun && \
+    apt-get clean
 
-RUN mkdir ~/.vnc
-RUN x11vnc -storepasswd password ~/.vnc/passwd
+RUN mkdir -p ~/.vnc && \
+    x11vnc -storepasswd password ~/.vnc/passwd
 
 EXPOSE 5900
 
-CMD x11vnc -forever -usepw -create 
+CMD ["x11vnc", "-forever", "-usepw", "-create"]

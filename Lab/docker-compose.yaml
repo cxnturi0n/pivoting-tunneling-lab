@@ -12,6 +12,7 @@ services:
     - "5900:5900"
     cap_add:
       - NET_ADMIN
+    privileged: true
       
   ping-api:
     container_name: ping-api
@@ -70,6 +71,8 @@ services:
     networks:
       internal_employees_network:
         ipv4_address: 192.168.30.22
+      dummy_network_for_double_pivoting:
+        ipv4_address: 192.168.40.90
     ports:
         - "2222:22"
 
@@ -89,5 +92,10 @@ networks:
     ipam:
       config:
         - subnet: 192.168.30.0/24
+  dummy_network_for_double_pivoting:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.40.0/24
 
 
