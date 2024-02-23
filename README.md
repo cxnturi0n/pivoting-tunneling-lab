@@ -5,6 +5,7 @@ It is being developed as the final exam project for the Network Security course.
 
 You can either play it on [DockerSecurityPlayground](https://github.com/DockerSecurityPlayground/DSP) platform or directly from your host by simply starting the containers in the docker compose provided in the [Lab](https://github.com/cxnturi0n/pivoting-tunneling-lab/tree/main/Lab) folder.
 
-![lab_overview](https://github.com/cxnturi0n/pivoting-tunneling-lab/assets/75443422/58436e45-298e-4dab-9edf-11b942ce6d5e)
+![lab_overview](https://github.com/cxnturi0n/pivoting-tunneling-lab/assets/75443422/657bda3a-cd7b-42f7-acdc-fc0b3fafa838)
+
 
 Work in progress..
