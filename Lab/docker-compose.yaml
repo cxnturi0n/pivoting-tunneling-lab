@@ -71,7 +71,7 @@ services:
     networks:
       internal_employees_network:
         ipv4_address: 192.168.30.22
-      dummy_network_for_double_pivoting:
+      dummy_network:
         ipv4_address: 192.168.40.90
     ports:
         - "2222:22"
@@ -92,7 +92,7 @@ networks:
     ipam:
       config:
         - subnet: 192.168.30.0/24
-  dummy_network_for_double_pivoting:
+  dummy_network:
     driver: bridge
     ipam:
       config:
