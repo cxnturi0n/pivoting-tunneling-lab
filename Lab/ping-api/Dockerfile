@@ -9,7 +9,7 @@ RUN npm install
 COPY . .
 
 RUN apk update && \
-    apk --no-cache add python3 openssh
+    apk --no-cache add python3 openssh build-base git
 
 RUN adduser -D "sysadmin" && \
     echo "sysadmin:asp4980-23a4221!" | chpasswd && \
