@@ -7,7 +7,7 @@ Security lab showing the use of a compromised host to pivot into internal networ
 ## Play
 You can either access the laboratory on [DockerSecurityPlayground](https://github.com/DockerSecurityPlayground/DSP) (DSP) by installing it and then starting the 'NS_Pivoting_PortForwarding_Tunneling' lab or playing it without DSP from your host by following these simple steps:
 1. Clone the repo: ```git clone https://github.com/cxnturi0n/pivoting-tunneling-lab.git```.
-2. Go inside Lab folder: ```cd pivoting-tunneling-lab```.
+2. Go inside Lab folder: ```cd pivoting-tunneling-lab/Lab```.
 3. Build and run containers: ```docker compose build && docker compose up -d```. This may take some minutes.
 4. Connect to the kali container with a vnc client at localhost:5900, specyifing 'password' as the password.
 5. Have fun!
