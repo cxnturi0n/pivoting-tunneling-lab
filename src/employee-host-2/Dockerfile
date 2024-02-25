@@ -7,9 +7,13 @@ RUN ssh-keygen -A
 ARG USER
 ARG PASSWORD
 
-RUN adduser -D "luca"
-RUN echo "luca:gP2@vN6r" | chpasswd
+RUN adduser -D $USER
+RUN echo "$USER:$PASSWORD" | chpasswd
 
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
+
+
+
+

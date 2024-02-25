@@ -3,7 +3,8 @@ services:
 
   attacker:
     container_name: attacker
-    image: 'fabiocinicolo/kali-light-vnc:latest'
+    build:
+      context: ./attacker
     networks:
       public_network:
         ipv4_address: 192.168.10.35
@@ -15,8 +16,12 @@ services:
       
   ping-api:
     container_name: ping-api
-    image: 'fabiocinicolo/ping-api:latest'
-    env_file: .ping-api.env
+    build:
+      context: ./ping-api
+      args:
+        SSH_USER: sysadmin
+        SSH_PASSWORD: asp4980-23a4221!
+    env_file: ./ping-api/.env
     networks:
       public_network:
         ipv4_address: 192.168.10.70
@@ -30,7 +35,11 @@ services:
 
   ping-web-app:
     container_name: ping-web-app
-    image: 'fabiocinicolo/ping-web-app:latest'
+    build:
+      context: ./ping-web-app
+      args:
+        REACT_APP_API_BASE_URL: http://192.168.10.70:8080
+        REACT_APP_API_PING_ENDPOINT: /ping
     networks:
       public_network:
         ipv4_address: 192.168.10.69
@@ -39,7 +48,8 @@ services:
   
   admin-dashboard:
     container_name: admin-dashboard
-    image: 'fabiocinicolo/admin-dashboard:latest'
+    build:
+      context: ./admin-dashboard
     networks:
       internal_devs_network:
         ipv4_address: 192.168.20.53
@@ -48,8 +58,9 @@ services:
   
   employee-host-1:
     container_name: employee-host-1
-    image: 'fabiocinicolo/employee-host-1:latest'
-    env_file: .employee-host-1.env
+    build:
+      context: ./employee-host-1
+    env_file: ./employee-host-1/.env
     networks:
       internal_employees_network:
         ipv4_address: 192.168.30.21
@@ -58,7 +69,11 @@ services:
 
   employee-host-2:
     container_name: employee-host-2
-    image: 'fabiocinicolo/employee-host-2:latest'
+    build:
+      context: ./employee-host-2
+      args:
+        USER: luca
+        PASSWORD: gP2@vN6r
     networks:
       internal_employees_network:
         ipv4_address: 192.168.30.22
