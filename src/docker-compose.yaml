@@ -29,9 +29,9 @@ services:
         ipv4_address: 192.168.20.51
       internal_employees_network:
         ipv4_address: 192.168.30.20
-    ports:
-      - "8080:8080"
-      - "22:22"
+    # ports:
+    #   - "8080:8080"
+    #   - "22:2201"
 
   ping-web-app:
     container_name: ping-web-app
@@ -43,8 +43,8 @@ services:
     networks:
       public_network:
         ipv4_address: 192.168.10.69
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
   
   admin-dashboard:
     container_name: admin-dashboard
@@ -53,8 +53,8 @@ services:
     networks:
       internal_devs_network:
         ipv4_address: 192.168.20.53
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
   
   employee-host-1:
     container_name: employee-host-1
@@ -64,8 +64,9 @@ services:
     networks:
       internal_employees_network:
         ipv4_address: 192.168.30.21
-    ports:
-      - "6080:80"
+    # ports:
+    #   - "80:8000"
+    #   - "5900:5901"
 
   employee-host-2:
     container_name: employee-host-2
@@ -79,8 +80,8 @@ services:
         ipv4_address: 192.168.30.22
       dummy_network:
         ipv4_address: 192.168.40.90
-    ports:
-      - "2222:22"
+    # ports:
+    #   - "22:2202"
 
 
 networks:
