@@ -1,0 +1,72 @@
+version: '2'
+services:
+  attacker:
+    image: 'fabiocinicolo/kali-light-vnc:latest'
+    stdin_open: true
+    tty: true
+    ports:
+      - '5900:5900'
+    networks:
+      public_network:
+        ipv4_address: 192.168.10.35
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+  ping-web-app:
+    image: 'fabiocinicolo/ping-web-app:latest'
+    stdin_open: true
+    tty: true
+    networks:
+      public_network:
+        ipv4_address: 192.168.10.69
+  dashboard:
+    image: 'fabiocinicolo/admin-dashboard:latest'
+    stdin_open: true
+    tty: true
+    networks:
+      devs_network:
+        ipv4_address: 192.168.20.53
+  host-1:
+    image: 'fabiocinicolo/employee-host-1:latest'
+    stdin_open: true
+    tty: true
+    networks:
+      employees_network:
+        ipv4_address: 192.168.30.21
+  host-2:
+    image: 'fabiocinicolo/employee-host-2:latest'
+    stdin_open: true
+    tty: true
+    networks:
+      dummy_network:
+        ipv4_address: 192.168.40.90
+      employees_network:
+        ipv4_address: 192.168.30.22
+  ping-api:
+    image: 'fabiocinicolo/ping-api:latest'
+    stdin_open: true
+    tty: true
+    networks:
+      public_network:
+        ipv4_address: 192.168.10.70
+      devs_network:
+        ipv4_address: 192.168.20.51
+      employees_network:
+        ipv4_address: 192.168.30.20
+networks:
+  public_network:
+    ipam:
+      config:
+        - subnet: 192.168.10.1/24
+  dummy_network:
+    ipam:
+      config:
+        - subnet: 192.168.40.1/24
+  devs_network:
+    ipam:
+      config:
+        - subnet: 192.168.20.1/24
+  employees_network:
+    ipam:
+      config:
+        - subnet: 192.168.30.1/24
