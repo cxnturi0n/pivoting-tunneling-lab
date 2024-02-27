@@ -1,5 +1,5 @@
 # Pivoting, port forwarding and tunneling security laboratory.
-Security lab showing the use of a compromised host to pivot into internal networks. 
+DSP lab showing the use of a compromised host to pivot into internal networks. 
 **The goal is to compromise a web application, and later, delve deeper into the network to access hosts that you cannot directly reach from your attack host using different approaches**.
 
 The documentation can be downloaded [here](https://github.com/cxnturi0n/pivoting-tunneling-lab/blob/main/Documentation.pdf). It will demonstrate you, step by step, how to perform pivoting, port forwarding, and tunneling using different techniques and tools, while also explaining the theoretical basics behind them.
