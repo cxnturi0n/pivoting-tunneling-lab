@@ -10,6 +10,6 @@ You can either access the laboratory on [DockerSecurityPlayground](https://githu
 3. Run the containers: ```docker compose up -d```. This may take some minutes.
 4. Connect to the kali container with a vnc client at localhost:5900, specyifing 'password' as the password.
 5. Type ```startxfce4``` in the terminal and the xfce desktop will show up.
-6. Follow along and have fun!
+6. Follow along with the documentation or simply test your pivoting skills!
 
 
